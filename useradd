@@ -1,0 +1,121 @@
+#!/bin/sh
+# <Author:xiaoxiao e-Maail:583077951@qq.com>
+
+echo "Input the username you want to add!"
+read -p "USERNAME: " username
+echo "INput the fist number of the users you want to add!"
+read -p "$username-- : " fnum
+i=$fnum
+j=$fnum
+echo "Input the number of the users you want to add!"
+read -p "NUMBER: " tnum
+num=`expr $fnum + $tnum`
+  echo "Input the password of these users you added!"
+	read -p "PASSWORD: " password
+
+useradd () {
+	while [ $i -le $num ]
+	do
+	if [ $i -le 9 ]
+	then 
+	    i=0$i
+	fi
+	    /usr/sbin/useradd $username$i
+	    i=`expr $i + 1`
+	done
+}
+
+passwdstdin () {
+	while [ $j -le $num ]
+	do
+	if [ $j -le 9 ]
+	then
+	   j=0$j
+	fi
+	echo $password | /usr/bin/passwd --stdin $username$j
+	j=`expr $j + 1`
+	done
+}
+
+echo;echo
+cat <<makesure
+	**********************************************
+		    $(date +%Y.%m.%d)
+	----------------------------------------------
+	     You will add the flowing users:
+	----------------------------------------------
+		$username$fnum --- $username$num
+	----------------------------------------------
+		password is *********
+	----------------------------------------------
+	     INPUT (y/Y/yes/YES) to ensure or
+	     INPUT any other keys to exit
+	**********************************************
+makesure
+
+read -p "Are you sure(Y/N)? : " ensure
+case $ensure in
+	Y|y|YES|yes\Yes) useradd ; passwdstdin ;;
+	*) exit 0 ;;
+esac
+
+#!/bin/sh
+# <Author:xiaoxiao e-Maail:583077951@qq.com>
+
+echo "Input the username you want to add!"
+read -p "USERNAME: " username
+echo "INput the fist number of the users you want to add!"
+read -p "$username-- : " fnum
+i=$fnum
+j=$fnum
+echo "Input the number of the users you want to add!"
+read -p "NUMBER: " tnum
+num=`expr $fnum + $tnum`
+  echo "Input the password of these users you added!"
+	read -p "PASSWORD: " password
+
+useradd () {
+	while [ $i -le $num ]
+	do
+	if [ $i -le 9 ]
+	then 
+	    i=0$i
+	fi
+	    /usr/sbin/useradd $username$i
+	    i=`expr $i + 1`
+	done
+}
+
+passwdstdin () {
+	while [ $j -le $num ]
+	do
+	if [ $j -le 9 ]
+	then
+	   j=0$j
+	fi
+	echo $password | /usr/bin/passwd --stdin $username$j
+	j=`expr $j + 1`
+	done
+}
+
+echo;echo
+cat <<makesure
+	**********************************************
+		    $(date +%Y.%m.%d)
+	----------------------------------------------
+	     You will add the flowing users:
+	----------------------------------------------
+		$username$fnum --- $username$num
+	----------------------------------------------
+		password is *********
+	----------------------------------------------
+	     INPUT (y/Y/yes/YES) to ensure or
+	     INPUT any other keys to exit
+	**********************************************
+makesure
+
+read -p "Are you sure(Y/N)? : " ensure
+case $ensure in
+	Y|y|YES|yes\Yes) useradd ; passwdstdin ;;
+	*) exit 0 ;;
+esac
