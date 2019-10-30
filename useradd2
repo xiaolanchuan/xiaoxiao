@@ -1,6 +1,9 @@
 #!/bin/sh
 # <Author:xiaoxiao e-Maail:583077951@qq.com>
 
+#test
+
+
 echo "Input the username you want to add!"
 read -p "USERNAME: " username
 echo "INput the fist number of the users you want to add!"
